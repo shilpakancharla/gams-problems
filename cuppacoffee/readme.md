@@ -5,3 +5,4 @@ chain of coffee shops. The ingredients for their specialty coffee are the follow
 | :---         |     :---:      |          ---: |
 | git status   | git status     | git status    |
 | git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
