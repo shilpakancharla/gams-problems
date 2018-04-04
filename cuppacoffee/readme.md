@@ -3,6 +3,6 @@ chain of coffee shops. The ingredients for their specialty coffee are the follow
 
 | Bean Type | Cost Per Pound | Available amount (pounds) |
 | :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
-| git diff     | git diff       | git diff      |
+| Columbian   | $1.00     | 550    |
+| Brazilian     | $0.85       | 450      |
+| Sumatran     | $1.55       | 650      |
