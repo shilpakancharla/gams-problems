@@ -29,3 +29,6 @@ declaring them as scalars). Example:
 `equations RS1 "Robust has at least 60 percent of sumatran";`
 
 `RS1.. x("Sumatran","Robust") =g= 0.6* sum(I, x(I,"Robust"));`
+
+
+Similar Blending Problem: https://www.gams.com/products/simple-example/
