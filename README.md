@@ -169,5 +169,17 @@ In summary, we obtain the following GAMS model, and save it into a `*.gms` file 
     
     `solve picframe using lp maximizing profit;`
 
-## GAMS output
+## Set declaration
+
+An important aspect of optimization modeling languages is the use of sets to collect indices. This feature allows the model to be succinctly states and easily read, making it convenient to model large-scale problems. To declare a set, start with the keyword **set** or **SET** followed by the name of the set, followed by members (also called elements) of the set between two slashes. The following statement `picframe2.gms` declares a set name `I` that consists of two elements "type-1" and "type-2".
+
+  `set I /type-1, type-2/;`
+  
+Note that elements of a set are labels but not numbers. To emphasize this, we can put the labels in quotes in the above statement: 
+
+  `set I /'type-1', 'type-2'/;`
+
+We note that we can define multiple sets at the same time. For example,
+
+   `SETS I "variables" /type-1, type-2/, J "constraints" /labor, metal/;`
 
