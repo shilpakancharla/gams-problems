@@ -46,6 +46,26 @@ Alternatively, we can declare multiple variables in a single statement:
   
   We can also declare variables and assign their type in one statement. Note that the objective variable *must* be a free variable in a GAMS optimization model.
   
+  Rules of an identifier: An identifier such as a `name` starts with a letter and follows by more letters or digits. It has up to 63 characters. The underscore is also allowed to define `names`. 
+
+Examples:
+
+- `Number_Of_Workers`
+- `2_Groups`
+- `Number-of-supply-points` (this does not count, it has dashes)
+- `Black&White` (this does not count because it has a special character)
+
+- **Sets**: A set in GAMS is defined as `set Name "text" / elements/ ;`
+
+- We can define multiple sets using sets (or SETS).
+
+- **Scalars**: Scalars can be used to deifne a single data entry. `scalar Name "text" / value /;`
+
+- **Parameters**: Parameters can be used to define a list of oriented data entries. `parameter Name "text" / element [=] value, ... /;`
+
+- **Tables**: Tables can be used to define a multiple dimensional dataset. `Table Table_name "text" element signed_num ...;`
+
+  
 ## Equations: declaration and definition
 
 To solve an optimization problem in GAMS, we need to specify the constraints and the objective function by **equations**. The keyword **equation** has a broad meaning in GAMS; it can mean either an equality or an inequality (see example below). A GAMS equation defined with a common name can also stand for a family of equations of the same structure.
@@ -124,22 +144,30 @@ In summary, we obtain the following GAMS model, and save it into a `*.gms` file 
    `*Assigns type of variables`
    
    `positive variables x1, x2;`
+   
+   `*Equation declaration`
+   
+    `equations`
+      
+      `obj   "max total profit",`
+      
+      `labor "labor hours",`
+      
+      `metal "metal in oz";`
+    
+    `*Equation definition`
+    
+      `obj..profit =e= 2.25*x1 + 2.60*x2;`
+      
+      `labor..2*x1 + x2 =l= 4000;`
+      
+      `metal..1*x1 +2*x2 =l= 5000;`
+      
+    `*Model and solve statements`
+    
+    `model picframe /all/;`
+    
+    `solve picframe using lp maximizing profit;`
 
-Rules of an identifier: An identifier such as a `name` starts with a letter and follows by more letters or digits. It has up to 63 characters. The underscore is also allowed to define `names`. 
+## GAMS output
 
-Examples:
-
-- `Number_Of_Workers`
-- `2_Groups`
-- `Number-of-supply-points` (this does not count, it has dashes)
-- `Black&White` (this does not count because it has a special character)
-
-- **Sets**: A set in GAMS is defined as `set Name "text" / elements/ ;`
-
-- We can define multiple sets using sets (or SETS).
-
-- **Scalars**: Scalars can be used to deifne a single data entry. `scalar Name "text" / value /;`
-
-- **Parameters**: Parameters can be used to define a list of oriented data entries. `parameter Name "text" / element [=] value, ... /;`
-
-- **Tables**: Tables can be used to define a multiple dimensional dataset. `Table Table_name "text" element signed_num ...;`
