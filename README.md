@@ -39,6 +39,10 @@ Alternatively, we can declare multiple variables in a single statement:
   - **binary**: a variable that is either 0 or 1
   
   - **integer**: a variable that can only take integer values between specified bounds (the bounds are 0 and 100 by default and can be changed)
+  
+  We can declare the variables first and then assigns types to them in a separate statement:
+  
+  `positive variables x1, x2;`
 
 Rules of an identifier: An identifier such as a `name` starts with a letter and follows by more letters or digits. It has up to 63 characters. The underscore is also allowed to define `names`. 
 
