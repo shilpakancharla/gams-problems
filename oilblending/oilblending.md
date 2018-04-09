@@ -11,4 +11,10 @@ Both types are made from a **national** refined oil and an **imported** refined 
 | National   | 25     | 87   |    40,000        |             
 | Imported     | 15       | 98      | 60,000    |             
 
+Both types must also comply with the specifications contained in the following table:
+
+| Oil | Maximum Steam Pressure | Minimum Octane Rating | Maximum Demand (barrel/week) | Minimum Delivery (Barrel/Week) |
+| :---:         |     :---:      |  :---: | :---:      |     :---:     |
+| National   | 23     | 88   |    100,000        |  50,000   |        
+| Imported     | 23       | 93      | 20,000    |   5,000    |    
 
