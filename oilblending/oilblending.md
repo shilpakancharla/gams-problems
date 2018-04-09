@@ -18,8 +18,11 @@ Both types must also comply with the specifications contained in the following t
 | National   | 23     | 88   |    100,000        |  50,000   |        
 | Imported     | 23       | 93      | 20,000    |   5,000    |  
 
-**Goal** : The refinery aims at determining the number of barrels of each gasoline type such that I it can maximize the weekly income
-I while satisfying the requirements detailed above.
+**Goal** : The refinery aims at determining the number of barrels of each gasoline type such that 
+
+- it can maximize the weekly income
+
+- while satisfying the requirements detailed above.
 
 **Task**: Model this problem into an LP problem and solve it.
 
