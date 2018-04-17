@@ -36,12 +36,9 @@ EQUATIONS
 
 obj 'minimum transportation cost',
 supply 'supply available',
-demand 'demand of customers';
 
-obj.. z =e= sum((I,J), price(I,J)*x(I,J) + penalty(J));
-supply.. sum(I, x(I,J)) =l= supply(I);
-demand.. sum(J, x(I,J)) =g= demand(J);
+obj.. z =e= sum((I,J), price(I,J)*x(I,J) + 70(40 - x(I,1)) + 75(50 - x(I,2)) + 65(40-x(I,3)));
+supply.. sum(I, x(I,J)) =l= 30;
 
 Model company /all/;
 Solve company using lp minimizing z;
-
