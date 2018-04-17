@@ -1,18 +1,30 @@
 *company.gms
 
-SETS I/Warehouse1, Warehouse2, Warehouse3/, J/Customer1, Customer2, Customer3/;
+SETS
+
+         I 'warehouse' /w1*w3/,
+         J 'customer' /c1*c3/;
 
 PARAMETERS
-         supply(I) 'supply of goods in units by warehouse'/Warehouse1 30, Warehouse2 30, Warehouse3 30/,
-         demand(J) 'demand of goods in units by customer'/Customer1 40, Customer2 50, Customer3 40/,
-         penalty(J) 'penalty for unmet demand per unit'/Customer1 70, Customer2 75, Customer3 65/;
+         supply(I) 'supply of goods in units by warehouse'
+                   /w1 30
+                    w2 30
+                    w3 30/,
+         demand(J) 'demand of goods in units by customer'
+                   /c1 40
+                    c2 50
+                    c3 40/,
+         penalty(J) 'penalty for unmet demand per unit'
+                   /c1 70,
+                    c2 75,
+                    c3 65/;
 
 TABLE price(I,J) 'costs of shipping 1 unit from each warehouse to each customer'
 
-                 Customer1       Customer2       Customer3
-Warehouse1              15              35              25
-Warehouse2              10              50              40
-Warehouse3              20              40              30;
+                c1              c2              c3
+w1              15              35              25
+w2              10              50              40
+w3              20              40              30;
 
 VARIABLE
          x(I,J) 'amount of units transferred from each warehouse to each customer',
@@ -22,6 +34,14 @@ Positive Variable x;
 
 EQUATIONS
 
-obj 'minimum transportation cost'
+obj 'minimum transportation cost',
+supply 'supply available',
+demand 'demand of customers';
 
-obj.. z =e= sum((I,J),
+obj.. z =e= sum((I,J), price(I,J)*x(I,J) + penalty(J));
+supply.. sum(I, x(I,J)) =l= supply(I);
+demand.. sum(J, x(I,J)) =g= demand(J);
+
+Model company /all/;
+Solve company using lp minimizing z;
+
