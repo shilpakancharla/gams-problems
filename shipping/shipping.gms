@@ -35,7 +35,7 @@ demand(J);
 
 cost.. z =e= sum((I,J), dist(I,J)*x(I,J));
 supply(I).. sum(J, x(I,J)) =l= a(I);
-demand(J).. sum(I, x(I,J) =g= b(J);
+demand(J).. sum(I, x(I,J)) =g= b(J);
 
 MODEL shipping /ALL/;
 SOLVE shipping USING LP MINIMIZING z;
