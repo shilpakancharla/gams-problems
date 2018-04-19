@@ -1,4 +1,4 @@
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 14:53:03 Page 1
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 15:40:18 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -44,39 +44,41 @@ C o m p i l a t i o n
   33  supply(I),
   34  demand(J);
   35   
-  36  cost.. z =e= sum((I,J), dist(I,J)*x(I,J));
+  36  cost.. z =e= sum((I,J), sqr(dist(I,J))*x(I,J));
   37  supply(I).. sum(J, x(I,J)) =l= a(I);
   38  demand(J).. sum(I, x(I,J)) =g= b(J);
   39   
   40  MODEL shipping /ALL/;
-  41  SOLVE shipping USING LP MINIMIZING z;
+  41  SOLVE shipping USING NLP MINIMIZING z;
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 MB  24.8.5 r61358 WEX-WEI
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 14:53:03 Page 2
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 15:40:18 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Equation Listing    SOLVE shipping Using LP From line 41
+Equation Listing    SOLVE shipping Using NLP From line 41
 
 
 ---- cost  =E=  cost in dollars of shipping a car from plants to warehouses
 
-cost..  z - 371*x(Atlanta,Memphis) - 761*x(Atlanta,Milwaukee)
+cost..  z - 137641*x(Atlanta,Memphis) - 579121*x(Atlanta,Milwaukee)
      
-      - 841*x(Atlanta,NewYork) - 1398*x(Atlanta,Denver)
+      - 707281*x(Atlanta,NewYork) - 1954404*x(Atlanta,Denver)
      
-      - 2496*x(Atlanta,SanFrancisco) - 1296*x(Boston,Memphis)
+      - 6230016*x(Atlanta,SanFrancisco) - 1679616*x(Boston,Memphis)
      
-      - 1050*x(Boston,Milwaukee) - 206*x(Boston,NewYork) - 1949*x(Boston,Denver)
+      - 1102500*x(Boston,Milwaukee) - 42436*x(Boston,NewYork)
      
-      - 3095*x(Boston,SanFrancisco) - 530*x(Chicago,Memphis)
+      - 3798601*x(Boston,Denver) - 9579025*x(Boston,SanFrancisco)
      
-      - 87*x(Chicago,Milwaukee) - 802*x(Chicago,NewYork) - 996*x(Chicago,Denver)
+      - 280900*x(Chicago,Memphis) - 7569*x(Chicago,Milwaukee)
      
-      - 2142*x(Chicago,SanFrancisco) - 1817*x(LosAngeles,Memphis)
+      - 643204*x(Chicago,NewYork) - 992016*x(Chicago,Denver)
      
-      - 2012*x(LosAngeles,Milwaukee) - 2786*x(LosAngeles,NewYork)
+      - 4588164*x(Chicago,SanFrancisco) - 3301489*x(LosAngeles,Memphis)
      
-      - 1059*x(LosAngeles,Denver) - 379*x(LosAngeles,SanFrancisco) =E= 0 ;
+      - 4048144*x(LosAngeles,Milwaukee) - 7761796*x(LosAngeles,NewYork)
+     
+      - 1121481*x(LosAngeles,Denver) - 143641*x(LosAngeles,SanFrancisco) =E= 0 ;
      
       (LHS = 0)
      
@@ -118,9 +120,9 @@ demand(NewYork)..  x(Atlanta,NewYork) + x(Boston,NewYork) + x(Chicago,NewYork)
      
 REMAINING 2 ENTRIES SKIPPED
 
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 14:53:03 Page 3
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 15:40:18 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Column Listing      SOLVE shipping Using LP From line 41
+Column Listing      SOLVE shipping Using NLP From line 41
 
 
 ---- z  
@@ -134,71 +136,91 @@ z
 
 x(Atlanta,Memphis)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-     -371       cost
+  -137641       cost
         1       supply(Atlanta)
         1       demand(Memphis)
 
 x(Atlanta,Milwaukee)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-     -761       cost
+  -579121       cost
         1       supply(Atlanta)
         1       demand(Milwaukee)
 
 x(Atlanta,NewYork)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-     -841       cost
+  -707281       cost
         1       supply(Atlanta)
         1       demand(NewYork)
 
 REMAINING 17 ENTRIES SKIPPED
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 14:53:03 Page 4
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 15:40:18 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Model Statistics    SOLVE shipping Using LP From line 41
+Model Statistics    SOLVE shipping Using NLP From line 41
 
 
 MODEL STATISTICS
 
 BLOCKS OF EQUATIONS           3     SINGLE EQUATIONS           10
 BLOCKS OF VARIABLES           2     SINGLE VARIABLES           21
-NON ZERO ELEMENTS            61
+NON ZERO ELEMENTS            61     NON LINEAR N-Z              0
+DERIVATIVE POOL              20     CONSTANT POOL              16
+CODE LENGTH                   0
 
 
-GENERATION TIME      =        0.031 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
+GENERATION TIME      =        0.047 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
 
 
-EXECUTION TIME       =        0.031 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 14:53:03 Page 5
+EXECUTION TIME       =        0.047 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/19/18 15:40:18 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
-Solution Report     SOLVE shipping Using LP From line 41
+Solution Report     SOLVE shipping Using NLP From line 41
 
 
                S O L V E      S U M M A R Y
 
      MODEL   shipping            OBJECTIVE  z
-     TYPE    LP                  DIRECTION  MINIMIZE
-     SOLVER  CPLEX               FROM LINE  41
+     TYPE    NLP                 DIRECTION  MINIMIZE
+     SOLVER  CONOPT              FROM LINE  41
 
 **** SOLVER STATUS     1 Normal Completion         
-**** MODEL STATUS      1 Optimal                   
-**** OBJECTIVE VALUE          8089000.0000
+**** MODEL STATUS      5 Locally Infeasible        
+**** OBJECTIVE VALUE      10000000000.0000
 
- RESOURCE USAGE, LIMIT          0.015      1000.000
- ITERATION COUNT, LIMIT         9    2000000000
+ RESOURCE USAGE, LIMIT          0.250      1000.000
+ ITERATION COUNT, LIMIT         4    2000000000
+ EVALUATION ERRORS              0             0
+CONOPT 3         24.8.5 r61358 Released May 10, 2017 WEI x86 64bit/MS Windows 
+ 
+ 
+    C O N O P T 3   version 3.17C
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  1
+ 
+ 
+ ** Infeasible solution. A free variable exceeds the allowable range.
+    Current value is 2.65E+10 and current upper bound (Rtmaxv) is 1.00E+10
+ 
+    The allowable range can be changed with option:
+ 
+    Rtmaxv=x.xxe+xx
+ 
+ 
+ CONOPT time Total                            0.232 seconds
+   of which: Function evaluations             0.002 =  0.9%
+             1st Derivative evaluations       0.000 =  0.0%
+ 
 
-IBM ILOG CPLEX   24.8.5 r61358 Released May 10, 2017 WEI x86 64bit/MS Windows 
-Cplex 12.7.1.0
-
-Space for names approximately 0.00 Mb
-Use option 'names no' to turn use of names off
-LP status(1): optimal
-Cplex Time: 0.00sec (det. 0.02 ticks)
-Optimal solution found.
-Objective :     8089000.000000
-
+**** ERRORS/WARNINGS IN VARIABLE z
+     1 error(s): Free variable becomes too large
 
                        LOWER     LEVEL     UPPER    MARGINAL
 
----- EQU cost            .         .         .        1.000      
+---- EQU cost            .    -1.65E+10      .         EPS  INFES
 
   cost  cost in dollars of shipping a car from plants to warehouses
 
@@ -206,54 +228,59 @@ Objective :     8089000.000000
 
               LOWER     LEVEL     UPPER    MARGINAL
 
-Atlanta        -INF   5000.000  5000.000  -925.000      
-Boston         -INF   6000.000  6000.000      .         
-Chicago        -INF   4000.000  4000.000  -953.000      
-LosAngeles     -INF   3000.000  3000.000  -890.000      
+Atlanta        -INF   5000.000  5000.000      EPS       
+Boston         -INF   6000.000  6000.000      EPS       
+Chicago        -INF   4000.000  4000.000      EPS       
+LosAngeles     -INF   3000.000  3000.000      EPS       
 
 ---- EQU demand  
 
                 LOWER     LEVEL     UPPER    MARGINAL
 
-Memphis       6000.000  6000.000     +INF   1296.000      
-Milwaukee     4000.000  4000.000     +INF   1040.000      
-NewYork       4000.000  4000.000     +INF    206.000      
-Denver        2000.000  2000.000     +INF   1949.000      
-SanFrancisco  2000.000  2000.000     +INF   1269.000      
+Memphis       6000.000  6000.000     +INF       EPS       
+Milwaukee     4000.000  4000.000     +INF       EPS       
+NewYork       4000.000  4000.000     +INF       EPS       
+Denver        2000.000  2000.000     +INF       EPS       
+SanFrancisco  2000.000  2000.000     +INF       EPS       
 
                        LOWER     LEVEL     UPPER    MARGINAL
 
----- VAR z              -INF  8.0890E+6     +INF       .         
+---- VAR z              -INF  1.000E+10     +INF       EPS  UNBND
 
 ---- VAR x  
 
                            LOWER     LEVEL     UPPER    MARGINAL
 
-Atlanta   .Memphis           .     5000.000     +INF       .         
-Atlanta   .Milwaukee         .         .        +INF    646.000      
-Atlanta   .NewYork           .         .        +INF   1560.000      
-Atlanta   .Denver            .         .        +INF    374.000      
-Atlanta   .SanFrancisco      .         .        +INF   2152.000      
-Boston    .Memphis           .     1000.000     +INF       .         
-Boston    .Milwaukee         .         .        +INF     10.000      
-Boston    .NewYork           .     4000.000     +INF       .         
-Boston    .Denver            .     1000.000     +INF       .         
-Boston    .SanFrancisco      .         .        +INF   1826.000      
-Chicago   .Memphis           .         .        +INF    187.000      
-Chicago   .Milwaukee         .     4000.000     +INF       .         
-Chicago   .NewYork           .         .        +INF   1549.000      
-Chicago   .Denver            .         .        +INF       .         
-Chicago   .SanFrancisco      .         .        +INF   1826.000      
-LosAngeles.Memphis           .         .        +INF   1411.000      
-LosAngeles.Milwaukee         .         .        +INF   1862.000      
-LosAngeles.NewYork           .         .        +INF   3470.000      
-LosAngeles.Denver            .     1000.000     +INF       .         
-LosAngeles.SanFrancisco      .     2000.000     +INF       .         
+Atlanta   .Memphis           .     2000.000     +INF       EPS       
+Atlanta   .Milwaukee         .     1000.000     +INF       EPS       
+Atlanta   .NewYork           .         .        +INF       EPS       
+Atlanta   .Denver            .     2000.000     +INF       EPS       
+Atlanta   .SanFrancisco      .         .        +INF       EPS       
+Boston    .Memphis           .         .        +INF       EPS       
+Boston    .Milwaukee         .     2000.000     +INF       EPS       
+Boston    .NewYork           .     4000.000     +INF       EPS       
+Boston    .Denver            .         .        +INF       EPS       
+Boston    .SanFrancisco      .         .        +INF       EPS       
+Chicago   .Memphis           .     1000.000     +INF       EPS       
+Chicago   .Milwaukee         .     1000.000     +INF       EPS       
+Chicago   .NewYork           .         .        +INF       EPS       
+Chicago   .Denver            .         .        +INF       EPS       
+Chicago   .SanFrancisco      .     2000.000     +INF       EPS       
+LosAngeles.Memphis           .     3000.000     +INF       EPS       
+LosAngeles.Milwaukee         .         .        +INF       EPS       
+LosAngeles.NewYork           .         .        +INF       EPS       
+LosAngeles.Denver            .         .        +INF       EPS       
+LosAngeles.SanFrancisco      .         .        +INF       EPS       
 
 
 **** REPORT SUMMARY :        0     NONOPT
-                             0 INFEASIBLE
-                             0  UNBOUNDED
+                             1 INFEASIBLE (INFES)
+                    SUM  1.651E+10
+                    MAX  1.651E+10
+                    MEAN 1.651E+10
+                             1  UNBOUNDED (UNBND)
+                             1     ERRORS ( ****)
+                             2  PROJECTED
 
 
 EXECUTION TIME       =        0.000 SECONDS      2 MB  24.8.5 r61358 WEX-WEI
