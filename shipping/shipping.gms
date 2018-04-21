@@ -4,8 +4,7 @@ C o m p i l a t i o n
 
 
    1  SETS I 'plant cities' /Atlanta, Boston, Chicago, LosAngeles/,
-   2       J 'warehouse cities' /Memphis, Milwaukee, NewYork, Denver, SanFrancis
-      co/;
+   2       J 'warehouse cities' /Memphis, Milwaukee, NewYork, Denver, SanFrancisco/;
    3   
    4  PARAMETERS
    5           a(I) 'cars available at plant'
@@ -24,16 +23,11 @@ C o m p i l a t i o n
   18  TABLE
   19           dist(I,J) 'distance between cities'
   20   
-  21                   Memphis         Milwaukee       NewYork         Denver   
-             SanFrancisco
-  22  Atlanta          371             761             841             1398     
-             2496
-  23  Boston           1296            1050            206             1949     
-             3095
-  24  Chicago          530             87              802             996      
-             2142
-  25  LosAngeles       1817            2012            2786            1059     
-             379;
+  21                   Memphis         Milwaukee       NewYork         Denver   SanFrancisco
+  22  Atlanta          371             761             841             1398     2496
+  23  Boston           1296            1050            206             1949     3095
+  24  Chicago          530             87              802             996      2142
+  25  LosAngeles       1817            2012            2786            1059     379;
   26   
   27  VARIABLES z, x(I,J);
   28   
