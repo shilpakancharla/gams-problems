@@ -1,4 +1,4 @@
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 16:44:07 Page 1
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 19:30:34 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -45,7 +45,7 @@ C o m p i l a t i o n
   34  plantEq(I),
   35  warehouseEq(J);
   36   
-  37  cost.. sum((I,J), sqr(dist(I,J))*x(I,J)) =e= z;
+  37  cost.. sum((I,J), sqrt(dist(I,J))*x(I,J)) =e= z;
   38  plantEq(I).. sum(J, x(I,J)) =e= a(I);
   39  warehouseEq(J).. sum(I, x(I,J)) =e= b(J);
   40   
@@ -59,31 +59,40 @@ C o m p i l a t i o n
 
 
 COMPILATION TIME     =        0.000 SECONDS      3 MB  24.8.5 r61358 WEX-WEI
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 16:44:07 Page 2
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 19:30:34 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE shipping Using LP From line 47
 
 
 ---- cost  =E=  
 
-cost..  137641*x(Atlanta,Memphis) + 579121*x(Atlanta,Milwaukee)
+cost..  19.2613602842582*x(Atlanta,Memphis)
      
-      + 707281*x(Atlanta,NewYork) + 1954404*x(Atlanta,Denver)
+      + 27.5862284482674*x(Atlanta,Milwaukee) + 29*x(Atlanta,NewYork)
      
-      + 6230016*x(Atlanta,SanFrancisco) + 1679616*x(Boston,Memphis)
+      + 37.3898381916798*x(Atlanta,Denver)
      
-      + 1102500*x(Boston,Milwaukee) + 42436*x(Boston,NewYork)
+      + 49.9599839871872*x(Atlanta,SanFrancisco) + 36*x(Boston,Memphis)
      
-      + 3798601*x(Boston,Denver) + 280900*x(Chicago,Memphis)
+      + 32.4037034920393*x(Boston,Milwaukee)
      
-      + 7569*x(Chicago,Milwaukee) + 643204*x(Chicago,NewYork)
+      + 14.3527000944073*x(Boston,NewYork) + 44.1474801092882*x(Boston,Denver)
      
-      + 992016*x(Chicago,Denver) + 4588164*x(Chicago,SanFrancisco)
+      + 23.0217288664427*x(Chicago,Memphis)
      
-      + 3301489*x(LosAngeles,Memphis) + 4048144*x(LosAngeles,Milwaukee)
+      + 9.32737905308882*x(Chicago,Milwaukee)
      
-      + 1121481*x(LosAngeles,Denver) + 143641*x(LosAngeles,SanFrancisco) - z
-      =E= 0 ; (LHS = 0)
+      + 28.3196045170126*x(Chicago,NewYork) + 31.559467676119*x(Chicago,Denver)
+     
+      + 46.2817458616245*x(Chicago,SanFrancisco)
+     
+      + 42.6262829718942*x(LosAngeles,Memphis)
+     
+      + 44.8553229840116*x(LosAngeles,Milwaukee)
+     
+      + 32.542280190546*x(LosAngeles,Denver)
+     
+      + 19.4679223339318*x(LosAngeles,SanFrancisco) - z =E= 0 ; (LHS = 0)
      
 
 ---- plantEq  =E=  
@@ -129,7 +138,7 @@ warehouseEq(NewYork)..  x(Atlanta,NewYork) + x(Boston,NewYork)
      
 REMAINING 2 ENTRIES SKIPPED
 
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 16:44:07 Page 3
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 19:30:34 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE shipping Using LP From line 47
 
@@ -138,19 +147,19 @@ Column Listing      SOLVE shipping Using LP From line 47
 
 x(Atlanta,Memphis)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-   137641       cost
+       19.2614  cost
         1       plantEq(Atlanta)
         1       warehouseEq(Memphis)
 
 x(Atlanta,Milwaukee)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-   579121       cost
+       27.5862  cost
         1       plantEq(Atlanta)
         1       warehouseEq(Milwaukee)
 
 x(Atlanta,NewYork)
                 (.LO, .L, .UP, .M = 0, 0, +INF, 0)
-   707281       cost
+       29       cost
         1       plantEq(Atlanta)
         1       warehouseEq(NewYork)
 
@@ -162,7 +171,7 @@ z
                 (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
        -1       cost
 
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 16:44:07 Page 4
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 19:30:34 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE shipping Using LP From line 47
 
@@ -174,11 +183,11 @@ BLOCKS OF VARIABLES           2     SINGLE VARIABLES           21
 NON ZERO ELEMENTS            59
 
 
-GENERATION TIME      =        0.047 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
+GENERATION TIME      =        0.031 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
 
 
-EXECUTION TIME       =        0.047 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
-GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 16:44:07 Page 5
+EXECUTION TIME       =        0.031 SECONDS      4 MB  24.8.5 r61358 WEX-WEI
+GAMS 24.8.5  r61358 Released May 10, 2017 WEX-WEI x86 64bit/MS Windows 04/21/18 19:30:34 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE shipping Using LP From line 47
 
@@ -191,9 +200,9 @@ Solution Report     SOLVE shipping Using LP From line 47
 
 **** SOLVER STATUS     1 Normal Completion         
 **** MODEL STATUS      1 Optimal                   
-**** OBJECTIVE VALUE       4464582000.0000
+**** OBJECTIVE VALUE           272263.9779
 
- RESOURCE USAGE, LIMIT          0.063      1000.000
+ RESOURCE USAGE, LIMIT          0.031      1000.000
  ITERATION COUNT, LIMIT         0    2000000000
 
 IBM ILOG CPLEX   24.8.5 r61358 Released May 10, 2017 WEI x86 64bit/MS Windows 
@@ -205,9 +214,9 @@ Finished reading from "C:\Users\shilpak\Documents\gamsdir\projdir\cplex.opt"
 Space for names approximately 0.00 Mb
 Use option 'names no' to turn use of names off
 LP status(1): optimal
-Cplex Time: 0.06sec (det. 0.02 ticks)
+Cplex Time: 0.03sec (det. 0.02 ticks)
 Optimal solution found.
-Objective :  4464582000.000000
+Objective :      272263.977947
 
 
                        LOWER     LEVEL     UPPER    MARGINAL
@@ -219,48 +228,48 @@ Objective :  4464582000.000000
               LOWER     LEVEL     UPPER    MARGINAL
 
 Atlanta     5000.000  5000.000  5000.000      .         
-Boston      6000.000  6000.000  6000.000 1.2382E+6      
-Chicago     4000.000  4000.000  4000.000 1.4326E+5      
-LosAngeles  3000.000  3000.000  3000.000 1.1958E+6      
+Boston      6000.000  6000.000  6000.000    16.739      
+Chicago     4000.000  4000.000  4000.000     3.760      
+LosAngeles  3000.000  3000.000  3000.000     2.386      
 
 ---- EQU warehouseEq  
 
                 LOWER     LEVEL     UPPER    MARGINAL
 
-Memphis       6000.000  6000.000  6000.000 1.3764E+5      
-Milwaukee     4000.000  4000.000  4000.000 -1.357E+5      
-NewYork       4000.000  4000.000  4000.000 -1.196E+6      
-Denver        2000.000  2000.000  2000.000 -7.427E+4      
-SanFrancisco  2000.000  2000.000  2000.000 -1.238E+6      
+Memphis       6000.000  6000.000  6000.000    19.261      
+Milwaukee     4000.000  4000.000  4000.000     5.567      
+NewYork       4000.000  4000.000  4000.000    -2.386      
+Denver        2000.000  2000.000  2000.000    27.409      
+SanFrancisco  2000.000  2000.000  2000.000   -16.739      
 
 ---- VAR x  
 
                            LOWER     LEVEL     UPPER    MARGINAL
 
 Atlanta   .Memphis           .     5000.000     +INF       .         
-Atlanta   .Milwaukee         .         .        +INF  7.1481E+5      
-Atlanta   .NewYork           .         .        +INF  1.9030E+6      
-Atlanta   .Denver            .         .        +INF  2.0287E+6      
-Atlanta   .SanFrancisco      .         .        +INF  7.4682E+6      
-Boston    .Memphis           .         .        +INF  3.0378E+5      
-Boston    .Milwaukee         .     1000.000     +INF       .         
-Boston    .NewYork           .     3000.000     +INF       .         
-Boston    .Denver            .         .        +INF  2.6347E+6      
+Atlanta   .Milwaukee         .         .        +INF     22.019      
+Atlanta   .NewYork           .         .        +INF     31.386      
+Atlanta   .Denver            .         .        +INF      9.981      
+Atlanta   .SanFrancisco      .         .        +INF     66.699      
+Boston    .Memphis           .     1000.000     +INF       .         
+Boston    .Milwaukee         .         .        +INF     10.098      
+Boston    .NewYork           .     1000.000     +INF       .         
+Boston    .Denver            .     2000.000     +INF       .         
 Boston    .SanFrancisco      .     2000.000     +INF       .         
-Chicago   .Memphis           .     1000.000     +INF       .         
-Chicago   .Milwaukee         .     3000.000     +INF       .         
-Chicago   .NewYork           .         .        +INF  1.6957E+6      
-Chicago   .Denver            .         .        +INF  9.2303E+5      
-Chicago   .SanFrancisco      .         .        +INF  5.6831E+6      
-LosAngeles.Memphis           .         .        +INF  1.9681E+6      
-LosAngeles.Milwaukee         .         .        +INF  2.9881E+6      
-LosAngeles.NewYork           .     1000.000     +INF       .         
-LosAngeles.Denver            .     2000.000     +INF       .         
-LosAngeles.SanFrancisco      .         .        +INF  1.8608E+5      
+Chicago   .Memphis           .         .        +INF       .         
+Chicago   .Milwaukee         .     4000.000     +INF       .         
+Chicago   .NewYork           .         .        +INF     26.945      
+Chicago   .Denver            .         .        +INF      0.390      
+Chicago   .SanFrancisco      .         .        +INF     59.260      
+LosAngeles.Memphis           .         .        +INF     20.979      
+LosAngeles.Milwaukee         .         .        +INF     36.902      
+LosAngeles.NewYork           .     3000.000     +INF       .         
+LosAngeles.Denver            .         .        +INF      2.748      
+LosAngeles.SanFrancisco      .         .        +INF     33.821      
 
                        LOWER     LEVEL     UPPER    MARGINAL
 
----- VAR z              -INF  4.4646E+9     +INF       .         
+---- VAR z              -INF  2.7226E+5     +INF       .         
 
 
 **** REPORT SUMMARY :        0     NONOPT
